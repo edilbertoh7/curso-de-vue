@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>listas</title>
+</head>
+<body>
+	<div id="main">
+		<ul>
+			<!-- se  lleva a cabo la iteracion de la variable people en la variable item -->
+			<li v-for="item in people">{{item}} </li>
+		</ul>
+		<!--se crea el metodo addName para que cuando se presione la tecla enter
+			el contenido del la caja se guarde en la etiqueta li
+		  -->
+		<input type="text" v-model="name" v-on:keyup.enter="addName">
+	</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el: '#main',
+		data:{
+			people:['lynda','isabella','diana','luisa']
+		},
+		name: '',
+		methods: {
+// el metodo  addName  pasa al arreglo people el contenidp 
+// de la caja de texto
+			addName:function() {
+				this.people.push(this.name);
+				this.name='';//se vacia la caja de texto luego de presionar enter
+			}
+		}
+	});
+</script>
+</body>
+</html>

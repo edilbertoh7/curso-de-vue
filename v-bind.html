@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>v-bind</title>
+</head>
+<body>
+	<div id="main">
+		<input type="text" v-model="info">
+		<!-- v-bind premite asignar un titulo y contenido dinamico a la etiqueta <p> -->
+		<p v-bind:title="info">texto de relleno...{{info}}</p>
+	</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el: '#main',
+		data:{
+			info:''
+		}
+	});
+</script>
+</body>
+</html>

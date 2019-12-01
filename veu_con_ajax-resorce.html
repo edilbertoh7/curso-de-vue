@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue con ajax resource</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/bootstrap4.css">
+<body>
+	<div id="main" class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<h1>lista VUEjs -AJAX</h1>
+				<ul class="list-group">
+					<li v-for="item in lists" class="list-group-item">{{item.name}}- {{item.username}} </li>
+				</ul>
+			</div>
+			<div class="col-sm-8">
+				<h1>JSON</h1>
+				<pre>
+					{{ $data | json }}
+				</pre>
+			</div>
+		</div>
+	</div>
+	</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script type="text/javascript">
+	
+	//var urlUsers = 'https://randomuser.me/api/?results=10';
+	var urlUsers = 'https://jsonplaceholder.typicode.com/users';
+	new Vue({
+		el: '#main',
+		created: function() {
+			   this.getUsers();
+		},
+		data:{
+			lists:[]
+		},
+		methods:{
+			getUsers: function() {
+				this.$http.get(urlUsers).then(function(response) {
+					/* response me trae el arreglo de datos incluyendo el estado de la pagina */
+					this.lists = response.data;
+				});
+			}
+		}
+	});
+</script>
+</body>
+</html>
