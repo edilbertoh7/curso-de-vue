@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('users', function () {
+	 $user = \App\User::orderBy('id','DESC')->take(5)->get();
+       return $user;
+});
